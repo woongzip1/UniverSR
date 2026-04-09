@@ -4,7 +4,7 @@
  
 [![arXiv](https://img.shields.io/badge/arXiv-2510.00771-b31b1b.svg)](https://arxiv.org/abs/2510.00771)
 [![Demo](https://img.shields.io/badge/Demo-Page-blue.svg)](https://woongzip1.github.io/universr-demo/)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/woongzip1/UniverSR/blob/main/UniverSR_GUI.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/woongzip1/UniverSR/blob/master/UniverSR_GUI.ipynb)
  
 This is the official PyTorch implementation of *UniverSR: Unified and Versatile Audio Super-Resolution via Vocoder-Free Flow Matching* **(ICASSP 2026)**: [paper](https://arxiv.org/abs/2510.00771), [demo page](https://woongzip1.github.io/universr-demo/).
  

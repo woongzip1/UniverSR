@@ -2,11 +2,11 @@
 UniverSR — Audio Super-Resolution GUI
 Gerçek API: UniverSR.from_pretrained() + model.enhance()
 
-Kurulum:
+Setup:
     pip install gradio torch torchaudio einops omegaconf \
                 librosa matplotlib soundfile requests tqdm torchdiffeq pillow
 
-Çalıştırma:
+Run:
     python universr_app.py
 """
 
@@ -28,7 +28,7 @@ import gradio as gr
 from PIL import Image
 
 # ══════════════════════════════════════════════════════════════════════════════
-#  CONSTANTS  (sabit — her iki model de aynı config kullanıyor)
+#  CONSTANTS
 # ══════════════════════════════════════════════════════════════════════════════
 REPO_URL      = "https://github.com/woongzip1/UniverSR.git"
 REPO_DIR      = Path("UniverSR")
@@ -424,7 +424,7 @@ def process(audio_input, model_label, lr_sr_khz, ode_method, ode_steps, guidance
 
 
 # ══════════════════════════════════════════════════════════════════════════════
-#  CSS — Terminal-green aesthetic  (sade görünüm, dolu hissiyat)
+#  CSS — Terminal-green aesthetic  
 # ══════════════════════════════════════════════════════════════════════════════
 CSS = """
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
