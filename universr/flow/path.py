@@ -9,7 +9,7 @@ class ConditionalProbabilityPath(nn.Module, ABC):
     """Abstract base class for conditional probability paths in flow matching."""
 
     @abstractmethod
-    def sample_source(self, shape_ref: torch.Tensor) -> torch.Tensor:
+    def sample_source(self, shape_ref: torch.Tensor, generator: torch.Generator = None) -> torch.Tensor:
         """Sample from the source distribution. shape_ref is used only for shape/device."""
 
     @abstractmethod
@@ -27,8 +27,8 @@ class OriginalCFMPath(ConditionalProbabilityPath):
         super().__init__()
         self.sigma_min = sigma_min
 
-    def sample_source(self, shape_ref):
-        return torch.randn_like(shape_ref)
+    def sample_source(self, shape_ref, generator=None):
+        return torch.randn(shape_ref.shape, dtype=shape_ref.dtype, device=shape_ref.device, generator=generator)
 
     def sample_xt(self, x0, x1, t):
         return t * x1 + (1 - t + self.sigma_min * t) * x0
