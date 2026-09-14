@@ -265,6 +265,9 @@ We've released our code under the [MIT License](LICENSE). If you find UniverSR u
 ```
 
 ## 📝 Changelog
+### v0.1.4
+- Fixed GPU memory buildup: `TorchDiffeqSolver.simulate()` now clones its output instead of returning a view into the full ODE trajectory (#9)
+
 ### v0.1.3
 - Added optional `seed` argument to `enhance()` for reproducible output (default `None`, stochastic)
 

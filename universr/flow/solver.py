@@ -123,5 +123,5 @@ class TorchDiffeqSolver(Solver):
                     func=func, 
                     y0=x_init, t=ts, 
                     method=self.method,
-                    atol=self.atol, rtol=self.rtol) # [N,B,C,H,W]   
-        return xs[-1]
+                    atol=self.atol, rtol=self.rtol) # [N,B,C,H,W]
+        return xs[-1].clone()
