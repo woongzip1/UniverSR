@@ -155,7 +155,7 @@ class UniverSR(torch.nn.Module):
         ode_method: str = "midpoint",
         ode_steps: int = 4,
         guidance_scale: Optional[float] = 1.5,
-        seed: Optional[int] = 42,
+        seed: Optional[int] = None,
     ) -> torch.Tensor:
         """
         Enhance a low-resolution audio signal to high-resolution.
@@ -174,7 +174,9 @@ class UniverSR(torch.nn.Module):
             ode_method: ODE solver method. One of 'euler', 'midpoint', 'rk4'.
             ode_steps: Number of ODE integration steps.
             guidance_scale: Classifier-free guidance scale. None or 0 disables CFG.
-            seed: Random seed for deterministic output. None disables seeding.
+            seed: Random seed for deterministic output. Default None: each call
+                  samples fresh noise (stochastic).
+                  Pass an int for reproducible output.
 
         Returns:
             Enhanced waveform tensor of shape (1,T) at target_sr.
@@ -306,7 +308,7 @@ class UniverSR(torch.nn.Module):
         ode_method: str,
         ode_steps: int,
         guidance_scale: Optional[float],
-        seed: Optional[int] = 42,
+        seed: Optional[int] = None,
     ) -> torch.Tensor:
         """
         Core inference pipeline:
@@ -330,7 +332,7 @@ class UniverSR(torch.nn.Module):
         generator = None
         if seed is not None:
             generator = torch.Generator(device=self._device).manual_seed(seed)
-        x0 = self.path.sample_source(Y_hr, generator=generator).to(self._device)
+        x0 = self.path.sample_source(Y_hr, generator=generator)
 
         # Build ODE solver
         if guidance_scale is not None and guidance_scale > 0:

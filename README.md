@@ -265,6 +265,9 @@ We've released our code under the [MIT License](LICENSE). If you find UniverSR u
 ```
 
 ## 📝 Changelog
+### v0.1.3
+- Added optional `seed` argument to `enhance()` for reproducible output (default `None`, stochastic)
+
 ### v0.1.2
 - Added Colab notebook (`UniverSR_GUI.ipynb`) with chunked processing support
 - Fixes crash for audio files longer than 2 minutes on free Colab (T4)
