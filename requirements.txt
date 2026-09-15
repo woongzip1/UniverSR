@@ -12,5 +12,5 @@ torchcodec==0.10.0
 torchdiffeq==0.2.5
 torchinfo==1.8.0
 tqdm==4.67.1
-transformers==4.53.0
+transformers==5.10.0
 wandb==0.25.0
