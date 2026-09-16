@@ -37,6 +37,19 @@ pip install -e ".[train]"
 # or: pip install -r requirements.txt
 ```
 
+Or with [uv](https://docs.astral.sh/uv/), which reproduces the exact environment the paper results were produced with (pinned in `uv.lock`):
+
+```bash
+git clone https://github.com/woongzip1/UniverSR.git
+cd UniverSR
+uv sync                  # inference only
+uv sync --extra train    # with training dependencies
+uv run python -c "import universr; print(universr.__version__)"
+```
+
+`uv run` executes inside the project environment, so there is no activation step.
+Note that uv installs the CUDA 12.8 build of PyTorch; use the `pip` instructions above if you need a different CUDA version.
+
 **Requirements**: Python ≥ 3.10, PyTorch ≥ 2.0, CUDA ≥ 11.8
 
 ---
@@ -265,6 +278,10 @@ We've released our code under the [MIT License](LICENSE). If you find UniverSR u
 ```
 
 ## 📝 Changelog
+### v0.1.5
+- Added uv support: `uv sync` reproduces the exact tested environment from `uv.lock`
+- Removed unused `torchcodec` dependency (never imported; the pinned 0.10.0 is ABI-incompatible with torch 2.7.1)
+
 ### v0.1.4
 - Fixed GPU memory buildup: `TorchDiffeqSolver.simulate()` now clones its output instead of returning a view into the full ODE trajectory (#9)
 

@@ -12,3 +12,5 @@ data/*.txt
 universr.egg-info/
 
 
+
+.venv/

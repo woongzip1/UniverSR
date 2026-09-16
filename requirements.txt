@@ -2,13 +2,13 @@ einops==0.8.2
 huggingface_hub==0.33.2
 librosa==0.10.2.post1
 matplotlib==3.10.8
+numpy==2.4.6
 python_box==7.3.2
 PyYAML==6.0.3
 soundfile==0.13.1
 timm==1.0.25
 torch==2.7.1
 torchaudio==2.7.1
-torchcodec==0.10.0
 torchdiffeq==0.2.5
 torchinfo==1.8.0
 tqdm==4.67.1

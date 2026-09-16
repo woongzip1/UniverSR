@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "universr"
-version = "0.1.0"
+version = "0.1.5"
 description = "Unified and Versatile Audio Super-Resolution via Vocoder-Free Flow Matching"
 readme = "README.md"
 license = {text = "MIT"}
@@ -25,13 +25,14 @@ classifiers = [
 dependencies = [
     "torch>=2.0",
     "torchaudio>=2.0",
-    "torchcodec>=0.1",
     "torchdiffeq>=0.2.3",
     "einops>=0.7",
     "timm>=0.9",
     "huggingface_hub>=0.20",
     "pyyaml>=6.0",
     "soundfile>=0.12",
+    "numpy>=1.24",
+    "tqdm>=4.60",
 ]
 
 [project.optional-dependencies]
@@ -42,7 +43,6 @@ train = [
     "transformers>=4.30",
     "wandb>=0.15",
     "torchinfo>=1.8",
-    "tqdm>=4.60",
 ]
 all = ["universr[train]"]
 
@@ -53,3 +53,39 @@ Demo = "https://woongzip1.github.io/universr-demo/"
 
 [tool.setuptools.packages.find]
 include = ["universr*"]
+
+# ---------------------------------------------------------------------------
+# uv-only settings. These affect `uv lock` / `uv sync` resolution and are NOT
+# part of the published package metadata, so `pip install universr` users keep
+# the broad ranges declared in [project.dependencies] above.
+# ---------------------------------------------------------------------------
+
+[tool.uv]
+# Exact versions the paper results were produced with (formerly requirements.txt).
+constraint-dependencies = [
+    "einops==0.8.2",
+    "huggingface-hub==0.33.2",
+    "librosa==0.10.2.post1",
+    "matplotlib==3.10.8",
+    "numpy==2.4.6; python_full_version >= '3.11'",
+    "python-box==7.3.2",
+    "pyyaml==6.0.3",
+    "soundfile==0.13.1",
+    "timm==1.0.25",
+    "torch==2.7.1",
+    "torchaudio==2.7.1",
+    "torchdiffeq==0.2.5",
+    "torchinfo==1.8.0",
+    "tqdm==4.67.1",
+    "transformers==4.53.0",
+    "wandb==0.25.0",
+]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchaudio = { index = "pytorch-cu128" }
